@@ -16,9 +16,13 @@ class Player {
 		camera.Projection = CameraProjection.Perspective;
 		camera.Target = new Vector3(0, 0, 0);
 		camera.Up = new Vector3(0, 1, 0);
+
+		velocity = new Vector3(0, 0, 0);
 	}
 
 	const float g = 0.1f;
+
+	bool falling = false;
 
 	public Vector3 velocity;
 	public Vector3 position;
@@ -27,7 +31,20 @@ class Player {
 
 	public void Update() {
 		Raylib.UpdateCamera(ref camera, CameraMode.FirstPerson);
+		position = camera.Position;
 
-		
+		if (falling) {
+			velocity.Y += g;
+		}
+		else {
+			velocity.Y = 0;
+		}
+
+		if (Raylib.IsKeyDown(KeyboardKey.K)) {
+			falling = !falling;
+		}
+
+		camera.Position -= velocity;
+
 	}
 }

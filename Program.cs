@@ -27,6 +27,9 @@ class Program {
 			lvl.drawLevel();
 
 			Raylib.EndMode3D();
+
+			Raylib.DrawText($"X:{player.position.X} Y:{player.position.Y} Z:{player.position.Z}", 0, 0, 20, Color.White);
+
 			Raylib.EndDrawing();
 		}
 
