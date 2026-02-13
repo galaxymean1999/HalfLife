@@ -18,6 +18,9 @@ class Player {
 		camera.Up = new Vector3(0, 1, 0);
 	}
 
+	const float g = 0.1f;
+
+	public Vector3 velocity;
 	public Vector3 position;
 
 	public Camera3D camera;
